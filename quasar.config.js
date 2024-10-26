@@ -9,6 +9,8 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -63,7 +65,7 @@ module.exports = configure(function (/* ctx */) {
       // publicPath: '/',
       // analyze: true,
       env: {
-        API: 'https://dahua.metcfire.com.tw/',
+        API: process.env.API,
       },
       // rawDefine: {}
       // ignorePublicFolder: true,

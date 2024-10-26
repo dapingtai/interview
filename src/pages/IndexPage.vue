@@ -44,7 +44,7 @@
                 style="min-width: 120px"
               >
                 <q-input
-                  v-model="editData[col.name]"
+                  v-model="editData[col.name as 'age' | 'name' | 'id']"
                   input-class="text-center"
                   :type="col.type"
                   borderless
@@ -133,6 +133,7 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios';
 import { QTableProps } from 'quasar';
 import { onMounted, ref } from 'vue';
 import { api } from 'src/boot/axios';
@@ -223,7 +224,7 @@ const addItem = (): void => {
 };
 
 const fetchData = async (): Promise<void> => {
-  const { data } = await api.get('/CRUDTest/a');
+  const { data } = await api.get('/api/CRUDTest/a');
   blockData.value = data;
 };
 
